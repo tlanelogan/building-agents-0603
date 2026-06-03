@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UdaPlay — AI Game Research Agent</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+  <header>
+    <h1>🎮 UdaPlay</h1>
+    <p class="tagline">AI research agent for the video game industry</p>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="ask">Ask</button>
+    <button class="tab" data-tab="history">History</button>
+    <button class="tab" data-tab="kb">Knowledge Base</button>
+  </nav>
+
+  <main>
+    <!-- ASK -->
+    <section id="tab-ask" class="tab-panel active">
+      <form id="ask-form">
+        <textarea id="query" rows="3"
+          placeholder="Ask about a game — e.g. When was Pokémon Gold and Silver released?"></textarea>
+        <button type="submit" id="ask-btn">Ask</button>
+      </form>
+      <div id="ask-status" class="status"></div>
+      <div id="ask-result"></div>
+    </section>
+
+    <!-- HISTORY -->
+    <section id="tab-history" class="tab-panel">
+      <div class="panel-head">
+        <h2>Previous prompts</h2>
+        <button id="refresh-history" class="ghost">Refresh</button>
+      </div>
+      <div id="history-list" class="list"></div>
+    </section>
+
+    <!-- KNOWLEDGE BASE -->
+    <section id="tab-kb" class="tab-panel">
+      <div class="panel-head">
+        <h2>Knowledge base</h2>
+        <button id="refresh-kb" class="ghost">Refresh</button>
+      </div>
+      <div id="kb-list" class="list"></div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

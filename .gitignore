@@ -225,6 +225,9 @@ __marimo__/
 # artifact, not source, so it shouldn't be in the repo.
 chromadb/
 
+# SQLite interaction log written by the web app / UdaPlayService — runtime data.
+*.db
+
 # Any per-directory copies of env files (the `.env` rule above covers `.env`).
 .env.*
 

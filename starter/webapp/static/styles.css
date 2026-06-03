@@ -1,0 +1,173 @@
+:root {
+  --bg: #0f1320;
+  --panel: #1a2032;
+  --panel-2: #232b42;
+  --text: #e6e9f2;
+  --muted: #9aa3bd;
+  --accent: #6c8cff;
+  --accent-2: #46d39a;
+  --border: #2c3552;
+  --code-bg: #11162a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+header {
+  padding: 24px 32px 8px;
+}
+header h1 { margin: 0; font-size: 28px; }
+.tagline { margin: 4px 0 0; color: var(--muted); }
+
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 32px;
+  border-bottom: 1px solid var(--border);
+}
+.tab {
+  background: none;
+  border: none;
+  color: var(--muted);
+  padding: 12px 18px;
+  font-size: 15px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+.tab:hover { color: var(--text); }
+.tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+main { padding: 24px 32px 60px; max-width: 980px; }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+#ask-form { display: flex; gap: 10px; align-items: flex-start; }
+textarea {
+  flex: 1;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 15px;
+  resize: vertical;
+}
+button {
+  cursor: pointer;
+  font-size: 14px;
+}
+#ask-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 22px;
+  font-weight: 600;
+}
+#ask-btn:disabled { opacity: 0.5; cursor: default; }
+button.ghost {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+button.ghost:hover { color: var(--text); }
+
+.status { color: var(--muted); margin: 14px 0; min-height: 18px; }
+.status.error { color: #ff8086; }
+
+.panel-head { display: flex; align-items: center; justify-content: space-between; }
+
+/* Answer card */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-top: 16px;
+}
+.card .q { font-weight: 600; margin-bottom: 8px; }
+.card .toolbar {
+  display: flex; gap: 8px; align-items: center;
+  margin: 10px 0;
+}
+.toggle { display: inline-flex; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.toggle button {
+  background: var(--panel-2); color: var(--muted); border: none; padding: 6px 12px;
+}
+.toggle button.active { background: var(--accent); color: #fff; }
+.copy-btn { margin-left: auto; }
+
+.badge {
+  display: inline-block; font-size: 12px; padding: 2px 9px; border-radius: 999px;
+  border: 1px solid var(--border); color: var(--muted);
+}
+.badge.internal { color: var(--accent-2); border-color: var(--accent-2); }
+.badge.learned_memory { color: #d3a3ff; border-color: #d3a3ff; }
+.badge.web { color: #ffd166; border-color: #ffd166; }
+.badge.mixed { color: #6cc4ff; border-color: #6cc4ff; }
+
+.answer-nl { white-space: pre-wrap; }
+pre.json {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  overflow-x: auto;
+  font-size: 13px;
+  margin: 0;
+}
+
+details.process {
+  margin-top: 12px;
+  border-top: 1px dashed var(--border);
+  padding-top: 10px;
+}
+details.process > summary { cursor: pointer; color: var(--muted); }
+.step {
+  border-left: 3px solid var(--border);
+  padding: 6px 0 6px 12px;
+  margin: 8px 0;
+}
+.step .step-head { font-weight: 600; font-size: 13px; }
+.step.reasoning .step-head { color: var(--accent); }
+.step.tool_call .step-head { color: #ffd166; }
+.step.tool_result .step-head { color: var(--accent-2); }
+.step.final_answer .step-head { color: #fff; }
+.step pre.json { margin-top: 6px; }
+.step .text { white-space: pre-wrap; margin-top: 4px; }
+
+/* Lists (history + KB) */
+.list { margin-top: 12px; }
+.row {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+.row > summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 12px 14px;
+  display: flex; align-items: center; gap: 10px;
+}
+.row > summary::-webkit-details-marker { display: none; }
+.row > summary .title { font-weight: 600; }
+.row > summary .meta { color: var(--muted); font-size: 13px; margin-left: auto; }
+.row .body { padding: 0 14px 14px; }
+
+.fields { width: 100%; border-collapse: collapse; }
+.fields td { padding: 6px 8px; border-top: 1px solid var(--border); vertical-align: top; }
+.fields td.k { color: var(--muted); width: 150px; }
+
+.empty { color: var(--muted); padding: 20px 0; }
